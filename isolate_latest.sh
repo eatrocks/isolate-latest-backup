@@ -16,5 +16,16 @@ echo "Source folder is $source"
 echo "Destination foler is $destination"
 echo "Log file is $logfile"
 
+if [[ ! -d $destination ]] ; then
+    echo 'Destination does not exist, aborting.'
+    exit 1
+fi
+
+if [[ ! -d $source ]] ; then
+    echo 'Source does not exist, aborting.'
+    exit 1
+fi
+
 # Go
+echo 'Here we go...'
 rsync -auv --log-file="$logfile" "$source" "$destination"
